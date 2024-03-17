@@ -1,0 +1,860 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>Dashboard</title>
+
+
+    <!-- jsPDF library -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{% static 'assets/css/Articles-Badges-images.css' %}"
+    />
+
+
+  
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  </head>
+
+  <body id="page-top">
+    <div id="wrapper">
+      <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content" style="background-color: rgb(202, 220, 211);">
+          <nav
+            class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top"
+          >
+            <div class="container-fluid">
+              <button
+                class="btn btn-link d-md-none rounded-circle me-3"
+                id="sidebarToggleTop"
+                type="button"
+              >
+                <i class="fas fa-bars"></i>
+              </button>
+              <h3 class=" mb-0">eKichabi</h3>
+              <button
+                id="downloadButton"
+                class="btn btn-sm d-none d-sm-inline-block"
+                role="button"
+                href="#"
+                style="background-color: #757197; color: white;"
+              >
+                <i class="fas fa-download fa-sm text-white-50"></i
+                >&nbsp;Generate Report
+              </button>
+            </div>
+          </nav>
+
+          <div class="container py-4 py-xl-5">
+            <div class="row mb-5">
+              <div class="col-md-8 col-xl-6 text-center mx-auto">
+                <h2>eKichabi Dashboard</h2>
+                <p>
+                  The Ekichabi Dashboard is an application dashboard that
+                  provides detailed metrics and analytics on the usage of the
+                  Ekichabi USSD Service and Ekichabi Android Application.&nbsp;
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="container-fluid">
+            <div
+              class="d-sm-flex justify-content-between align-items-center mb-4"
+            ></div>
+            <p class="text-center font-weight-bold mb-4">
+              <h4 class="text-center">General Information</h4>
+            </p>
+            <div class = "row">
+              <div class="col-md-6 col-xl-3 mb-4">
+                <div class="card shadow border-start-success py-2">
+                  <div class="card-body">
+                    <div class="row align-items-center no-gutters">
+                      <div class="col me-2">
+                        <div
+                          class="text-uppercase  fw-bold text-xs mb-1"
+                        >
+                          <span>Number of whitelisted users</span>
+                        </div>
+                        <div class=" fw-bold h5 mb-0">
+                          <span>{{total_whitelisted}} Users</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-xl-3 mb-4">
+                <div class="card shadow border-start-success py-2">
+                  <div class="card-body">
+                    <div class="row align-items-center no-gutters">
+                      <div class="col me-2">
+                        <div
+                          class="text-uppercase  fw-bold text-xs mb-1"
+                        >
+                          <span>No. of Users whitelisted this month</span>
+                        </div>
+                        <div class=" fw-bold h5 mb-0">
+                          <span>{{whitelist_monthly}} Users</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class = "row">
+              <div class="col-lg-4 col-xl-4">
+                <div class="card shadow mb-4">
+                  <div
+                    class="card-header d-flex justify-content-between align-items-center"
+                  >
+                    <h6 class="fw-bold m-0">
+                      Total Logged Actions (by Whitelisted Users)
+                    </h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="graph_div">{{ avuactions|safe }}</div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-xl-4">
+                <div class="card shadow mb-4">
+                  <div
+                    class="card-header d-flex justify-content-between align-items-center"
+                  >
+                    <h6 class="fw-bold m-0">
+                      Logged Actions Per Active Whitelisted User
+                    </h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="graph_div">{{ avuactionsperuser|safe }}</div>
+                  </div>
+                
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-xl-4">
+                <div class="card shadow mb-4">
+                  <div
+                    class="card-header d-flex justify-content-between align-items-center"
+                  >
+                    <h6 class="fw-bold m-0">
+                      Number of Unique Users (phone numbers)
+                    </h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="graph_div">{{ avuuniqueusers|safe }}</div>
+                  </div>
+                 
+                </div>
+              </div>
+            </div>
+
+            <p class="text-center font-weight-bold mb-4">
+              <h4 class="text-center">USSD Information</h4>
+            </p>
+            
+            
+            <div class="row">
+              <div class="col-md-6 col-xl-3 mb-4">
+                <div class="card shadow border-start-primary py-2">
+                  <div class="card-body">
+                    <div class="row align-items-center no-gutters">
+                      <div class="col me-2">
+                        <div
+                          class="text-uppercase fw-bold text-xs mb-1"
+                        >
+                          <span>Total sessions since launch on 11/15</span>
+                        </div>
+                        <div class="fw-bold h5 mb-0">
+                          <span>{{total}} Sessions</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              
+              <div class="col-md-6 col-xl-3 mb-4">
+                <div class="card shadow border-start-success py-2">
+                  <div class="card-body">
+                    <div class="row align-items-center no-gutters">
+                      <div class="col me-2">
+                        <div
+                          class="text-uppercase fw-bold text-xs mb-1"
+                        >
+                          <span>Total Calls made by non-whitelisted users</span>
+                        </div>
+                        <div class="fw-bold h5 mb-0">
+                          <span>{{non_whitelisted_calls}} Calls</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-md-6 col-xl-3 mb-4">
+                <div class="card shadow border-start-info py-2">
+                  <div class="card-body">
+                    <div class="row align-items-center no-gutters">
+                      <div class="col me-2">
+                        <div
+                          class="text-uppercase fw-bold text-xs mb-1"
+                        >
+                          <span> The number of calls this week</span>
+                        </div>
+                        <div class="row g-0 align-items-center">
+                          <div class="col-auto">
+                            <div class="fw-bold h5 mb-0 me-3">
+                              <span> {{callsweekly}} Call</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-xl-3 mb-4">
+                <div class="card shadow border-start-warning py-2">
+                  <div class="card-body">
+                    <div class="row align-items-center no-gutters">
+                      <div class="col me-2">
+                        <div
+                          class="text-uppercase fw-bold text-xs mb-1"
+                        >
+                          <span
+                            >The average length of time for each session</span
+                          >
+                        </div>
+                        <div class="fw-bold h5 mb-0">
+                          <span
+                            >{{averageSessionTime_hr}} Hour
+                            {{averageSessionTime_min}} Minutes
+                            {{averageSessionTime_sec}} Seconds</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+            
+
+            
+              <div class="col-md-6 col-xl-3 mb-4">
+                <div class="card shadow border-start-warning py-2">
+                  <div class="card-body">
+                    <div class="row align-items-center no-gutters">
+                      <div class="col me-2">
+                        <div
+                          class="text-uppercase fw-bold text-xs mb-1"
+                        >
+                          <span>Application Uptime</span>
+                        </div>
+                        <div class=" fw-bold h5 mb-0">
+                          <span>{{applicationUptimedays}}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+
+            <!--TRY NO-->
+            <div class="row">
+              
+
+              
+
+              
+            </div>
+            <!--TRY NO-->
+
+            <div class="row">
+              <!-- Bar Chart-->
+              <div class="col-lg-6 col-xl-6">
+                <div class="card shadow mb-4">
+                  <div
+                    class="card-header d-flex justify-content-between align-items-center"
+                  >
+                    <h6 class="fw-bold m-0">
+                      Total USSD Sessions grouped by Day of the Week
+                    </h6>
+                  </div>
+                  <div class="card-body">
+                <div class="graph_div">{{ ussdsessionsperweekdaynot255000000000|safe }}</div>
+              </div>
+                </div>
+              </div>
+              <!-- Bar Chart-->
+
+              <div class="col-lg-6 col-xl-6">
+                <div class="card shadow mb-4">
+                  <div
+                    class="card-header d-flex justify-content-between align-items-center"
+                  >
+                    <h6 class=" fw-bold m-0">
+                      Total USSD Sessions grouped by Hour of the Day
+                    </h6>
+                  </div>
+                  <div class="card-body">
+                <div class="graph_div">{{ ussdsessionsperhour|safe }}</div>
+              </div>
+                </div>
+              </div>
+
+            <div class="row">
+              <!-- Bar Chart-->
+              
+              <!-- Bar Chart-->
+
+              <!-- Bar Chart-->
+       
+              <!-- Bar Chart-->
+
+              <!-- Bar Chart-->
+              <div class="col-lg-4 col-xl-4">
+                <div class="card shadow mb-4">
+                  <div
+                    class="card-header d-flex justify-content-between align-items-center"
+                  >
+                    <h6 class="fw-bold m-0">
+                      What is typed in (Top 5)
+                    </h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="graph_div">{{ top5searches|safe }}</div>
+                  </div>
+                 
+                </div>
+              </div>
+              <!-- Bar Chart-->
+            </div>
+            <!----------------------------------------->
+            <div class="row">
+              <!-- Bar Chart-->
+              <div class="col-lg-4 col-xl-4">
+                <div class="card shadow mb-4">
+                  <div
+                    class="card-header d-flex justify-content-between align-items-center"
+                  >
+                    <h6 class="fw-bold m-0">No. of Visits for Each District (Top 10)</h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="graph_div">{{ district|safe }}</div>
+                  </div>
+
+                  
+                </div>
+              </div>
+              <!-- Bar Chart-->
+
+              <!-- Bar Chart-->
+              <div class="col-lg-4 col-xl-4">
+                <div class="card shadow mb-4">
+                  <div
+                    class="card-header d-flex justify-content-between align-items-center"
+                  >
+                    <h6 class=" fw-bold m-0">No. of Visits for Each Category (Top 10)</h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="graph_div">{{ category|safe }}</div>
+                  </div>
+
+                 
+                </div>
+              </div>
+              <!-- Bar Chart-->
+
+              <!-- Bar Chart-->
+              <div class="col-lg-4 col-xl-4">
+                <div class="card shadow mb-4">
+                  <div
+                    class="card-header d-flex justify-content-between align-items-center"
+                  >
+                    <h6 class=" fw-bold m-0">No. of Visits for Each Business (Top 10)</h6>
+                  </div>
+
+                  <div class="card-body">
+                    <div class="graph_div">{{ business|safe }}</div>
+                  </div>
+
+                 
+                </div>
+              </div>
+              <!-- Bar Chart-->
+            </div>
+            <!----------------------------------------->
+
+            <!----------------------------------------->
+            <div class="row">
+              <!-- Bar Chart-->
+              <div class="col-lg-4 col-xl-4">
+                <div class="card shadow mb-4">
+                  <div
+                    class="card-header d-flex justify-content-between align-items-center"
+                  >
+                    <h6 class=" fw-bold m-0">No. of Visits for Each Subsector (Top 10)</h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="graph_div">{{ subsector1|safe }}</div>
+                  </div>
+                 
+                </div>
+              </div>
+              <!-- Bar Chart-->
+
+              <!-- Bar Chart-->
+              <div class="col-lg-4 col-xl-4">
+                <div class="card shadow mb-4">
+                  <div
+                    class="card-header d-flex justify-content-between align-items-center"
+                  >
+                    <h6 class=" fw-bold m-0">No. of Visits for Each Village (Top 10)</h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="graph_div">{{ village|safe }}</div>
+                  </div>
+
+                </div>
+              </div>
+              <!-- Bar Chart-->
+
+              <!-- Bar Chart-->
+              <!-- <div class="col-lg-4 col-xl-4">
+                <div class="card shadow mb-4">
+                  <div
+                    class="card-header d-flex justify-content-between align-items-center"
+                  >
+                    <h6 class=" fw-bold m-0">Product/Service</h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="graph_div">{{ product|safe }}</div>
+                  </div>
+
+                </div>
+              </div> -->
+              <!-- Bar Chart-->
+            </div>
+
+            <div class="row">
+              <!-- Bar Chart-->
+              <div class="col-lg-12 col-xl-12">
+                <div class="card shadow mb-4">
+                  <div
+                    class="card-header d-flex justify-content-between align-items-center"
+                  >
+                    <h6 class=" fw-bold m-0">
+                      USSD Sessions per Day 
+                    </h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="graph_div">{{ ussdsessionsperday|safe }}</div>
+                  </div>
+                </div>
+              </div>
+              <!-- Bar Chart-->
+            </div>
+
+            <div class="row">
+              <!-- Bar Chart-->
+              <div class="col-lg-12 col-xl-12">
+                <div class="card shadow mb-4">
+                  <div
+                    class="card-header d-flex justify-content-between align-items-center"
+                  >
+                    <h6 class=" fw-bold m-0">
+                      USSD Sessions per Week
+                    </h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="graph_div">{{ ussdsessionsperweek|safe }}</div>
+                  </div>
+                </div>
+              </div>
+              <!-- Bar Chart-->
+            </div>
+
+            <div class="row">
+              <!-- Bar Chart-->
+              <div class="col-lg-12 col-xl-12">
+                <div class="card shadow mb-4">
+                  <div
+                    class="card-header d-flex justify-content-between align-items-center"
+                  >
+                    <h6 class=" fw-bold m-0">
+                      USSD Sessions per Month
+                    </h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="graph_div">{{ ussdsessionspermonth|safe }}</div>
+                  </div>
+                </div>
+              </div>
+              <!-- Bar Chart-->
+            </div>
+            <div class="row">
+              <!-- Bar Chart-->
+              <div class="col-lg-4 col-xl-4">
+                <div class="card shadow mb-4">
+                  <div
+                    class="card-header d-flex justify-content-between align-items-center"
+                  >
+                    <h6 class=" fw-bold m-0">
+                      The number of calls for every day this week (plot)
+                    </h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="graph_div">{{ callsDaily|safe }}</div>
+                  </div>
+                
+                </div>
+              </div>
+              <!-- Bar Chart-->
+
+              <!-- Bar Chart-->
+              <div class="col-lg-4 col-xl-4">
+                <div class="card shadow mb-4">
+                  <div
+                    class="card-header d-flex justify-content-between align-items-center"
+                  >
+                    <h6 class=" fw-bold m-0">
+                      Plotting session length 0 secs to 1 hour - histogram
+                    </h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="graph_div">{{ time_elapsed_plot|safe }}</div>
+                  </div>
+                
+                </div>
+              </div>
+              <!-- Bar Chart-->
+
+              <!-- Bar Chart-->
+              <div class="col-lg-4 col-xl-4">
+                <div class="card shadow mb-4">
+                  <div
+                    class="card-header d-flex justify-content-between align-items-center"
+                  >
+                    <h6 class=" fw-bold m-0">
+                      10 Businesses that are visited the most # of times this
+                      week
+                    </h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="graph_div">{{ topBusiness|safe }}</div>
+                  </div>
+               
+                </div>
+              </div>
+              <!-- Bar Chart-->
+            </div>
+
+            <h4 class="mb-4">Usage Logs</h4>
+<div class="form-group">
+  <select class="form-control mb-3" id="ussdfile" name="ussdfile" onchange="setLogfileKind('ussdfile')">
+    <option value="">Select a ussd log file...</option>
+    {% for file in ussd_log_files %}
+    <option value="{{file}}">{{file}}</option>
+    {% endfor %}
+  </select>
+  <select class="form-control mb-3" id="androidfile" name="androidfile" onchange="setLogfileKind('androidfile')">
+    <option value="">Select an Android log file...</option>
+    {% for file in android_log_files %}
+    <option value="{{file}}">{{file}}</option>
+    {% endfor %}
+  </select>
+  <button class="btn btn-primary" onclick="previewLog()">View file</button>
+</div>
+<pre><code id="log"></code></pre> 
+
+
+            <p class="text-center font-weight-bold mb-4">
+              <h4 class="text-center">Android Information</h4>
+            </p>
+
+            <div class="row">
+              <div class="col-md-6 col-xl-3 mb-4">
+                <div class="card shadow border-start-primary py-2">
+                  <div class="card-body">
+                    <div class="row align-items-center no-gutters">
+                      <div class="col me-2">
+                        <div
+                          class="text-uppercase  fw-bold text-xs mb-1"
+                        >
+                          <span
+                            >The total number of actions so far from when we go
+                            live</span
+                          >
+                        </div>
+                        <div class=" fw-bold h5 mb-0">
+                          <span>{{totalActions}} Actions</span>
+                        </div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-xl-3 mb-4">
+                <div class="card shadow border-start-info py-2">
+                  <div class="card-body">
+                    <div class="row align-items-center no-gutters">
+                      <div class="col me-2">
+                        <div
+                          class="text-uppercase  fw-bold text-xs mb-1"
+                        >
+                          <span
+                            >Number of times that businesses have been
+                            favorited</span
+                          >
+                        </div>
+                        <div class="row g-0 align-items-center">
+                          <div class="col-auto">
+                            <div class=" fw-bold h5 mb-0 me-3">
+                              <span>{{totalFavorite}} Businesses</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-auto">
+                        <i
+                          class="fas fa-clipboard-list fa-2x text-gray-300"
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-xl-3 mb-4">
+                <div class="card shadow border-start-warning py-2">
+                  <div class="card-body">
+                    <div class="row align-items-center no-gutters">
+                      <div class="col me-2">
+                        <div
+                          class="text-uppercase  fw-bold text-xs mb-1"
+                        >
+                          <span
+                            >Businesses called from within the app
+                          </span>
+                        </div>
+                        <div class=" fw-bold h5 mb-0">
+                          <span>{{totalCalls}} Calls</span>
+                        </div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-comments fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <!-- Bar Chart-->
+              <div class="col-lg-6 col-xl-6">
+                <div class="card shadow mb-4">
+                  <div
+                    class="card-header d-flex justify-content-between align-items-center"
+                  >
+                    <h6 class="fw-bold m-0">Number of Android Searchs (Top 10)</h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="graph_div">{{ searchMetric|safe }}</div>
+                  </div>
+                  
+                </div>
+              </div>
+              <!-- Bar Chart-->
+              <div class="col-lg-6 col-xl-6">
+                <div class="card shadow mb-4">
+                  <div
+                    class="card-header d-flex justify-content-between align-items-center"
+                  >
+                    <h6 class="fw-bold m-0">Number of Searches Vs Month</h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="graph_div">{{ temporal|safe }}</div>
+                  </div>
+            
+                </div>
+              </div>
+            </div>
+
+            
+
+            <p class="text-center font-weight-bold mb-4">
+              <h4 class="text-center">Internal App Metrics</h4>
+            </p>
+
+            <div class="row">
+  <div class="col">
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <div class="card shadow" >
+          <div class="card-body">
+            <p class="m-0" >Number of random requests sampled</p>
+            <p class="small m-0">
+              {{silkedrequests|safe}}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card shadow" >
+          <div class="card-body">
+            <p class="m-0" >Average end-to-end response time</p>
+            <p class="small m-0" >
+              {{silkedrequestsaveragetime|safe}}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card shadow">
+          <div class="card-body">
+            <p class="m-0" >Currently active sessions stored in cache</p>
+            <p class="small m-0" >
+              {{redisactivesessions|safe}}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 mb-6">
+        <div class="card shadow" >
+          <div class="card-body">
+            <p class="m-0">Cache memory used</p>
+            <p class="small m-0" >
+              {{redismemoryused|safe}}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 mb-6">
+        <div class="card shadow" >
+          <div class="card-body">
+            <p class="m-0" >Cache memory used (operating system)</p>
+            <p class="small m-0" >
+              {{redismemoryusedos|safe}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        <footer class="sticky-footer">
+          <div class="container my-auto">
+            <div class="text-center my-auto copyright">
+              <span>eKichabi Dashboard Application</span>
+            </div>
+          </div>
+        </footer>
+      </div>
+      <a class="border rounded d-inline scroll-to-top" href="#page-top"
+        ><i class="fas fa-angle-up"></i
+      ></a>
+    </div>
+
+
+    <!-- Add this button to your HTML code -->
+
+
+
+    <script>
+      $(document).ready(function () {
+        $("#ussdfile, #androidfile").selectize({
+          sortField: "text",
+        });
+      });
+
+      let logfileKind;
+      function setLogfileKind(kind) {
+        logfileKind = kind;
+      }
+
+      function previewLog() {
+        let elem = document.getElementById(logfileKind);
+        let path = elem.options[elem.selectedIndex].text;
+        getResource("file" + path).then((txt) => {
+          document.getElementById("log").innerHTML = JSON.parse(
+            txt.replaceAll("\\n", "<br>")
+          ).replaceAll("<br>", "\n");
+          hljs.initHighlightingOnLoad();
+        });
+      }
+
+      let password = false;
+      async function getResource(resource, body = "") {
+        password ||= prompt(
+          "This is a password protected resource. Please enter the password:"
+        );
+        try {
+          let res = await fetch("/dashboard", {
+            headers: {
+              password: password,
+              resource: resource,
+            },
+            method: "POST",
+            body: body,
+          });
+          return await res.text();
+        } catch (err) {
+          console.error(err);
+        }
+      }
+    </script>
+    <script>
+      document
+        .getElementById("downloadButton")
+        .addEventListener("click", function () {
+          window.location.href = "/dashboard/download_pdf";
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    <script src="{% static 'assets/js/bs-init.js' %}"></script>
+    <script src="{% static 'assets/js/theme.js' %}"></script>
+  </body>
+</html>

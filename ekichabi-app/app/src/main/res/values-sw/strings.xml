@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">eKichabi</string>
+    <string name="favorites_tab">Zinazopendelewa </string>
+    <string name="search_tab">Tafuta</string>
+    <string name="browse_tab">Angalia</string>
+    <string name="select_village">Chagua Kijiji</string>
+    <string name="select_district">Chagua Wilaya</string>
+    <string name="select_sector">Chagua Sekta</string>
+    <string name="call_button">Piga simu</string>
+    <string name="favorite_button">Zinazopendelewa</string>
+    <string name="save_contact_button">Hifadhi Mawasiliano</string>
+    <string name="save_contact_button_short">Hifadhi</string>
+    <string name="remove_favorite_button">Ondoa Inayopendelewa</string>
+    <string name="location_label">Mahali:</string>
+    <string name="phone_number_label">Simu:</string>
+    <string name="sector_label">Sekta:</string>
+    <string name="subsector_label">Sekta Ndogo:</string>
+    <string name="clear_filter_entry">Futa</string>
+    <string name="no_businesses_found">Hakuna Biashara Iliyopatikana.</string>
+    <string name="no_favorite_businesses_found">Hakuna Biashara Inayopendelewa Iliyopatikana.</string>
+    <string name="no_favorite_businesses_subtext">Kuongeza Biashara Inayopendelewa, bonyeza alama ya nyota mbele ya Jina la Biashara
+</string>
+    <string name="back_button">Rudi Nyuma</string>
+    <string name="settings_title">Mipangilio</string>
+    <string name="language_switch">Badili Lugha</string>
+    <string name="clear_district_filter_entry">Futa Wilaya</string>
+    <string name="clear_village_filter_entry">Futa Kijiji </string>
+    <string name="clear_sector_filter_entry">Futa Sekta</string>
+    <string name="select_text_size">Chagua Maneno Ukubwa</string>
+    <string name="small">Ndogo</string>
+    <string name="medium">Ya Kati</string>
+    <string name="large">Kubwa</string>
+    <string name="xlarge">Kubwa Zaidi</string>
+    <string name="swahili">Kiswahili</string>
+    <string name="english">Kiingreza</string>
+    <string name="apply_changes">Fanya Mabadiliko</string>
+    <string name="more_details">Maelezo</string>
+    <string name="save_contact_permission_denied">Uhifadhi wa Mawasiliano umeshindikana kwa sababu hatuna ruhusa ya kufikia Mawasiliano yako. Kubadilisha ruhusa kwa ajili ya eKichabi v2.0, ondoka kwenye mfumo na uende kwenye Mipangilio (Settings) ya Simu yako
+</string>
+    <string name="no_phone_number">Hakuna</string>
+    <string name="help">Msaada</string>
+    <string name="is_added_to_Favorite">Imeongezwa kwa zinazopedwa</string>
+    <string name="is_removed_from_Favorite">Imeondolewa kutoka kwa zinazopenwa</string>
+    <string name="help_call">Bofya kitufe hiki ili kuwasiliana na biashara</string>
+    <string name="help_save">Bofya kitufe hiki ili kuhifadhi mawasiliano ya biashara</string>
+    <string name="help_detail">Bofya popote kwenye biashara kwa mailezo ya kina</string>
+    <string name="select_subsector">Chagua Sekta Ndogo</string>
+    <string name="all_subsector">Futa Sekta Ndogo</string>
+    <string name="no_access">Umefikia huduma ya eKichabi. Tunahusisha namba chache za simu kwasasa, tafadhali angalia tena baada ya miezi michache.</string>
+    <string name="get_started">Anza</string>
+    <string name="owner">Jina la mmiliki: </string>
+    <string name="login">Ingia</string>
+    <string name="check_whitelist">Inakagua orodha iliyoidhinishwa…</string>
+    <string name="redirect">Kuelekeza kwingine…</string>
+    <string name="reenter_pn">Ingiza tena nambari ya simu</string>
+    <string name="no_internet">Hakuna Muunganisho wa Mtandao</string>
+    <string name="loading">Kupakia…</string>
+    <string name="no_match_found">No match found</string>
+    <string name="refresh">Inaburudisha…</string>
+    <string name="finished">Imekamilika</string>
+</resources>

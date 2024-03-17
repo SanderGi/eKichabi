@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+    <title>Dashboard</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        button {
+            appearance: button;
+            background-color: #1899D6;
+            border: solid transparent;
+            border-radius: 16px;
+            border-width: 0 0 4px;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            cursor: pointer;
+            display: inline-block;
+            font-family: din-round,sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            line-height: 20px;
+            margin: 0;
+            outline: none;
+            overflow: visible;
+            padding: 13px 16px;
+            text-align: center;
+            text-transform: uppercase;
+            touch-action: manipulation;
+            transform: translateZ(0);
+            transition: filter .2s;
+            user-select: none;
+            -webkit-user-select: none;
+            vertical-align: middle;
+            white-space: nowrap;
+            width: 100%;
+        }
+
+        button:after {
+            background-clip: padding-box;
+            background-color: #1CB0F6;
+            border: solid transparent;
+            border-radius: 16px;
+            border-width: 0 0 4px;
+            bottom: -4px;
+            content: "";
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: -1;
+        }
+
+        button:main,
+        button:focus {
+            user-select: auto;
+        }
+
+        button:hover:not(:disabled) {
+            filter: brightness(1.1);
+            -webkit-filter: brightness(1.1);
+        }
+
+        button:disabled {
+            cursor: auto;
+        }
+    </style>
+
+    <link rel="stylesheet"
+    href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+</head>
+<body>
+    <h1>eKichabi Dashboard</h1>
+    <h2>Usage Charts and Metrics</h2>
+    <h3>Android vs USSD</h3>
+    <div class='graph_div'>
+        {{ avuactions|safe }}
+    </div>
+    <div class='graph_div'>
+        {{ avuactionsperuser|safe }}
+    </div>
+    <div class='graph_div'>
+        {{ avuuniqueusers|safe }}
+    </div>
+    <h3>USSD</h3>
+    <div class='graph_div'>
+        {{ ussdsessionsperday|safe }}
+    </div>
+    <div class='graph_div'>
+        {{ ussdsessionsperweekday|safe }}
+    </div>
+    <div class="graph_div">
+        {{ ussdsessionsperhour|safe }}
+    </div>
+
+    <h2>Usage Logs</h3>
+    <select id="ussdfile" name="ussdfile" placeholder="Pick one of {{ ussd_log_files|length }} ussd log files..." onchange="setLogfileKind('ussdfile')">
+        <option value="">Select a ussd log file...</option>
+        {% for file in ussd_log_files %}
+        <option value="{{file}}">
+            {{file}}
+        </option>
+        {% endfor %}
+    </select>
+    <select id="androidfile" name="androidfile" placeholder="Pick one of {{ android_log_files|length }} Android log files..." onchange="setLogfileKind('androidfile')">
+        <option value="">Select an Android log file...</option>
+        {% for file in android_log_files %}
+        <option value="{{file}}">
+            {{file}}
+        </option>
+        {% endfor %}
+    </select>
+    <button onclick="previewLog()">View file</button>
+    <pre><code id="log"></code></pre>
+
+    <h2>Server Health and Performance Metrics</h2>
+
+    <p>Number of random requests sampled: {{ silkedrequests|safe }}</p>
+    <p>Average end-to-end response time: {{ silkedrequestsaveragetime|safe }}ms</p>
+
+    <p>Currently active sessions stored in cache: {{ redisactivesessions|safe }}</p>
+    <p>Cache memory used: {{ redismemoryused|safe }} Bytes</p>
+    <p>Cache memory used (operating system): {{ redismemoryusedos|safe }} Bytes</p>
+
+    <script>
+        $(document).ready(function () {
+            $('#ussdfile, #androidfile').selectize({
+                sortField: 'text'
+            });
+        });
+
+        let logfileKind;
+        function setLogfileKind(kind) {
+            logfileKind = kind;
+        }
+
+        function previewLog() {
+            let elem = document.getElementById(logfileKind);
+            let path = elem.options[elem.selectedIndex].text;
+            getResource('file' + path).then(txt => {
+                document.getElementById('log').innerHTML = JSON.parse(txt.replaceAll("\\n","<br>")).replaceAll("<br>","\n");
+                hljs.initHighlightingOnLoad();
+            });
+        }
+
+        let password = false;
+        async function getResource(resource, body="") {
+            password ||= prompt("This is a password protected resource. Please enter the password:")
+            try {
+                let res = await fetch("/dashboard",
+                {
+                    headers: {
+                    'password': password,
+                    'resource': resource
+                    },
+                    method: "POST",
+                    body: body
+                })
+                return await res.text();
+            } catch (err) { 
+                console.error(err) 
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+*.pyc
+*.db
+ignore/
+*.DS_Store
+/logs/*
+/logsArchive/*
+/redis/cache.rdb
+/redis/cache.rdb.settings

@@ -1,0 +1,28 @@
+#mockDisplay {
+  height:300px;
+  border: 1px solid black;
+  border-radius: 5px;
+
+  font-family:monospace;
+  word-wrap:break-word;
+}
+
+#historyDisplay {
+  font-family:monospace;
+}
+
+#historyDisplay li {
+  margin: 0px;
+}
+
+#textOverflow {
+	color:red;
+	white-space:pre-wrap;
+	display: inline;
+}
+
+
+#textValid {
+	white-space:pre-wrap;
+	display: inline;
+}

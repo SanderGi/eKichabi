@@ -1,0 +1,331 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-09-25 17:52-0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: config/settings_base.py:172
+msgid "Swahili"
+msgstr "Kiswahili"
+
+#: config/settings_base.py:173
+msgid "English"
+msgstr "Kiingereza"
+
+#: eKichabiDemo/ekichabi_demo.py:25 eKichabiDemo/ekichabi_demo.py:136
+#, python-format
+msgid ""
+"Your query could not be found.\n"
+"Please check spelling and try again, or enter %s to go back."
+msgstr ""
+"Swali lako halikupatikana.\n"
+"Tafadhari, hakikisha herufi na jaribu tena, au ingiza %s rudi nyuma."
+
+#: eKichabiDemo/ekichabi_demo.py:29
+msgid ""
+"Enter a business name, village, or category.\n"
+"Make sure your spelling is correct!"
+msgstr ""
+"Tafadhali ingiza jina la biashara, kiwanja, au kijiji.\n"
+"Hakikisha kama herufi zako ni sahihi."
+
+#, python-format
+msgid "Type the first part of a %(type)s:"
+msgstr "Andika sehemu ya kwanza ya %(type)s:"
+
+#: eKichabiDemo/ekichabi_demo.py:104 eKichabiDemo/ekichabi_demo.py:206
+#, python-format
+msgid "Too many results. Enter %s to go back, then enter a longer query"
+msgstr "Matokeo mengi sana. Ingiza %s rudi nyuma, kisha ingiza swali la muda mrefu."
+
+#: eKichabiDemo/ekichabi_demo.py:141
+msgid "Go Back"
+msgstr "Kurudi nyuma"
+
+#: eKichabiDemo/ekichabi_demo.py:147 eKichabiDemo/ekichabi_demo.py:231
+#: eKichabiDemo/ekichabi_demo.py:248 eKichabiDemo/ekichabi_demo.py:268
+#: eKichabiDemo/ekichabi_demo.py:519 eKichabiDemo/ekichabi_demo.py:542
+msgid "Your input is not a valid menu item. Please try again."
+msgstr "Chaguo lako uliloingiza sio sahihi, tafadhari jaribu tena."
+
+#: eKichabiDemo/ekichabi_demo.py:222
+msgid "What level do you want to search for"
+msgstr "Unataka kutafuta kiwango gani"
+
+#: eKichabiDemo/ekichabi_demo.py:223 eKichabiDemo/models.py:80
+msgid "District"
+msgstr "Wilaya"
+
+#: eKichabiDemo/ekichabi_demo.py:224 eKichabiDemo/models.py:97
+msgid "Village"
+msgstr "Kijiji"
+
+#: eKichabiDemo/ekichabi_demo.py:225 eKichabiDemo/models.py:117
+msgid "Subvillage"
+msgstr "Kitongoji"
+
+#: eKichabiDemo/ekichabi_demo.py:240
+msgid "Do you want to filter results by location?"
+msgstr "Je, ungependa kuchuja matokeo kulingana na eneo?"
+
+#: eKichabiDemo/ekichabi_demo.py:241
+msgid "Yes"
+msgstr "Ndiyo"
+
+#: eKichabiDemo/ekichabi_demo.py:242
+msgid "No"
+msgstr "Hapana"
+
+#: eKichabiDemo/ekichabi_demo.py:257
+msgid "What would you like to search for?"
+msgstr "Ni nini cha kutafuta?"
+
+#: eKichabiDemo/ekichabi_demo.py:258 eKichabiDemo/models.py:168
+msgid "Business"
+msgstr "Biashara"
+
+#: eKichabiDemo/ekichabi_demo.py:259
+msgid "Location"
+msgstr "Mahali"
+
+#: eKichabiDemo/ekichabi_demo.py:260
+msgid "Product/Service"
+msgstr "Bidhaa/Huduma"
+
+msgid "Product/Crop"
+msgstr "Bidhaa/Mazao"
+
+msgid "Sector/Service"
+msgstr "Sekta/Huduma"
+
+msgid "Crop"
+msgstr "Mazao"
+
+msgid "Sector"
+msgstr "Sekta"
+
+#: eKichabiDemo/ekichabi_demo.py:261
+msgid "Owner name"
+msgstr "Jina la mmiliki"
+
+#: eKichabiDemo/ekichabi_demo.py:276
+msgid "Select a village:"
+msgstr "Chagua kijiji:"
+
+#: eKichabiDemo/ekichabi_demo.py:303
+msgid ""
+"More than one business with that name exists.\n"
+"Select the location of your business:"
+msgstr ""
+"Biashara zaidi ya moja kwenye jina linalojulikana.\n"
+"Chagua eneo la biashara yako."
+
+#: eKichabiDemo/ekichabi_demo.py:348
+#, python-format
+msgid ""
+"%(name)s\n"
+"%(line)s\n"
+"%(keywords)s\n"
+"Owner: %(owner)s\n"
+"Located in: %(location)s\n"
+"Phone: %(number)s"
+msgstr ""
+"%(name)s\n"
+"%(line)s\n"
+"%(keywords)s\n"
+"Mmiliki: %(owner)s\n"
+"Wapi: %(location)s\n"
+"Simu: %(number)s"
+
+#: eKichabiDemo/ekichabi_demo.py:365
+#, python-format
+msgid "next, %s. back"
+msgstr "Mbele, %s. Rudi nyuma"
+
+#: eKichabiDemo/ekichabi_demo.py:376
+msgid "Send SMS"
+msgstr "Tuma SMS"
+
+#: eKichabiDemo/ekichabi_demo.py:381
+msgid "Done"
+msgstr "Imekamilika"
+
+#: eKichabiDemo/ekichabi_demo.py:395
+msgid ""
+"All businesses have been visited in person to collect contact information, "
+"but please use discretion when transacting with unknown individuals"
+msgstr ""
+"Biashara zote zimetembelewa kibinafsi ili kukusanya habari za mawasiliano, "
+"lakini tafadhali tumia busara unaposhughulika na watu wasiojulikana"
+
+#: eKichabiDemo/ekichabi_demo.py:396
+msgid "next"
+msgstr "Mbele"
+
+#: eKichabiDemo/ekichabi_demo.py:409
+#, python-format
+msgid "Enter %s to go back from any screen."
+msgstr "Ingiza %s rudi nyuma kutoka skrini yoyote."
+
+#: eKichabiDemo/ekichabi_demo.py:438
+#, python-format
+msgid "Select a %(filter)s:"
+msgstr "Chagua %(filter)s:"
+
+#: eKichabiDemo/ekichabi_demo.py:483
+#, python-format
+msgid ""
+"All businesses (%(num_biz)s),\n"
+"or "
+msgstr ""
+"Biashara Zote (%(num_biz)s),\n"
+"au "
+
+#: eKichabiDemo/ekichabi_demo.py:495
+msgid "Select a Business:"
+msgstr "Chagua biashara:"
+
+#: eKichabiDemo/ekichabi_demo.py:507
+#, python-format
+msgid "%s. Back"
+msgstr "%s. Rudi nyuma"
+
+#, python-format
+msgid "%s. back"
+msgstr "%s. Rudi nyuma"
+
+#: eKichabiDemo/ekichabi_demo.py:527
+msgid "Welcome to eKichabi!\n"
+msgstr "Karibu eKichabi!\n"
+
+#, python-format
+msgid ""
+"Welcome to eKichabi!\n"
+"Enter %s to go back from any screen."
+msgstr ""
+"Karibu eKichabi!\n"
+"Ingiza %s rudi nyuma kutoka skrini yoyote."
+
+#: eKichabiDemo/ekichabi_demo.py:527
+msgid "Select an option:"
+msgstr "Chagua ya ziada:"
+
+#: eKichabiDemo/ekichabi_demo.py:532
+msgid "Search by category"
+msgstr "Tafuta kwa kuchagua sekta"
+
+msgid "Browse by location"
+msgstr "Tafuta kwa kuchagua mahali"
+
+#: eKichabiDemo/ekichabi_demo.py:534
+msgid "Search"
+msgstr "Tafuta kwa kuandika"
+
+#: eKichabiDemo/ekichabi_demo.py:535
+msgid "Instructions"
+msgstr "Maelekezo"
+
+#: eKichabiDemo/ekichabi_demo.py:557
+msgid "Databases Not Setup"
+msgstr "Hifadhidata Haijawekwa"
+
+#: eKichabiDemo/models.py:35
+msgid "Category"
+msgstr "Sekta"
+
+#: eKichabiDemo/models.py:65
+msgid "Subsector"
+msgstr "Sekta ndogo"
+
+msgid "Hiring and Labor"
+msgstr "Kukodi"
+
+msgid "Financial Services"
+msgstr "Fedha"
+
+msgid "Non-Agri Services"
+msgstr "Nyingine"
+
+msgid "Transport"
+msgstr "Usafirishaji"
+
+msgid "Agricultural processing"
+msgstr "Usindikaji"
+
+msgid "Merchant/retail"
+msgstr "Rejareja"
+
+msgid "Trading and wholesale"
+msgstr "Jumla"
+
+msgid "Repairs"
+msgstr "Fundi"
+
+msgid "Services"
+msgstr "Huduma"
+
+msgid "Skilled Trades"
+msgstr "Fundi/Ujuzi"
+
+#, python-format
+msgid "Need help? Call %s."
+msgstr "Unahitaji msaada? Piga simu %s."
+
+#George changed this add sw translation for LookUpErrorScreen
+#: UssdHttp/screens.py:180
+#, python-format
+msgid "Your query could not be found.\nPlease check spelling and try again, enter %s to go back or press %s to end the session."
+msgstr "Hoja yako haikupatikana.\nTafadhali angalia tahajia na ujaribu tena, weka %s ili kurudi nyuma au bonyeza %s ili kumaliza kipindi."
+
+#, python-format
+msgid "Press %s to end the session."
+msgstr "Bonyeza %s ili kumaliza kipindi."
+
+msgid "There was more than 100 results. Do you want to filter 100 random results by location?"
+msgstr "Kulikuwa na matokeo zaidi ya 100. Je, unataka kuchuja matokeo 100 bila mpangilio kulingana na eneo?"
+
+#, python-format
+msgid "Too many results (%i). Enter %s to go back or enter a longer query"
+msgstr "Matokeo mengi sana (%i). Weka %s ili kurudi nyuma au uweke hoja ndefu zaidi"
+
+#, python-format
+msgid "Your query could not be found.\nPlease check spelling and try again.\nEnter %s to go back or enter a longer query"
+msgstr "Hoja yako haikupatikana.\nTafadhali angalia tahajia na ujaribu tena.\nWeka %s ili kurudi nyuma au uweke hoja ndefu zaidi"
+
+msgid "You have reached the eKichabi service. We are only sharing it with a few phone numbers currently, please check back in a couple months!"
+msgstr "Umefikia huduma ya eKichabi. Tunahusisha namba chache za simu kwasasa, tafadhali angalia tena baada ya miezi michache."
+
+msgid "Business name"
+msgstr "Jina la biashara"
+
+msgid "Enter %s to go back from any screen. Enter %s to go back to the home screen from any screen."
+msgstr "Ingiza %s ili kurudi nyuma kutoka skrini yoyote. Weka %s ili kurudi kwenye skrini ya kwanza kutoka skrini yoyote."
+
+msgid "No businesses were found matching your search. Enter a new search, or press %s to go back."
+msgstr "Hakuna biashara zilizopatikana kulingana na utafutaji wako. Ingiza utafutaji mpya, au bonyeza %s ili kurudi nyuma."
+
+msgid "Specialty"
+msgstr "Umaalumu"
+
+msgid "Agricultural Product"
+msgstr "Bidhaa za Kilimo"
+
+msgid "Livestock"
+msgstr "Mifugo"
+
+msgid "Others"
+msgstr "Wengine"
