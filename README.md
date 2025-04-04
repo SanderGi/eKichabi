@@ -1,4 +1,6 @@
 # eKichabi v2
+[![maintenance-status](https://img.shields.io/badge/maintenance-experimental-blue.svg)](https://gist.github.com/taiki-e/ad73eaea17e2e0372efb76ef6b38f17b)
+
 This is a public version of the private repository of the eKichabi v2 project. Sensitive information has been removed. Please contact alexander.le@outlook.dk if you spot any user information/secrets leaked in the code.
 
 The eKichabi v2 paper was published to the ACM SIGCHI 2024 conference in Hawaii. Checkout the paper [here](https://sandergi.github.io/images/eKichabi_v2_chi24a.pdf) and watch the video presentation [here](https://youtu.be/v-1JuQp1ous).
